@@ -1,0 +1,10 @@
+{% extends "base.html" %}{% block title %}Staff Registration{% endblock %}
+{% block content %}<div class="container py-5"><div class="card-dark p-4 p-md-5 mx-auto" style="max-width:650px"><h2 class="text-center">Government Staff Registration</h2><p class="text-muted-custom text-center">Registration is stored for authorized staff access.</p>
+<form action="{{ url_for('register_staff') }}" method="post" enctype="multipart/form-data" id="staffForm">
+<div class="mb-3"><label class="form-label">Full Name *</label><input name="name" class="form-control" required></div>
+<div class="mb-3"><label class="form-label">Phone Number *</label><input name="phone" class="form-control" maxlength="10" pattern="[6-9][0-9]{9}" required></div>
+<div class="mb-3"><label class="form-label">Sector *</label><select name="sector" class="form-select" required><option value="">Select sector</option><option>Public Works Department (PWD)</option><option>Sanitation</option><option>Electricity</option><option>Education</option><option>Healthcare</option><option>Police</option><option>Transport</option><option>Administration</option><option>Other</option></select></div>
+<div class="mb-3"><label class="form-label">Offer Letter / Proof of Post</label><input name="proof" class="form-control" type="file" accept=".pdf,.jpg,.jpeg,.png"></div>
+<div class="row g-3"><div class="col-md-6"><label class="form-label">Password *</label><input id="pw" name="password" class="form-control" type="password" minlength="8" required></div><div class="col-md-6"><label class="form-label">Confirm Password *</label><input id="cpw" name="confirmPassword" class="form-control" type="password" minlength="8" required></div></div>
+<button class="btn btn-gold w-100 mt-4">Register Staff</button></form></div></div>{% endblock %}
+{% block scripts %}<script>staffForm.onsubmit=e=>{if(pw.value!==cpw.value){e.preventDefault();alert('Passwords do not match.')}};</script>{% endblock %}

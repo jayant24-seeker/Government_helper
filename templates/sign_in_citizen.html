@@ -1,0 +1,16 @@
+{% extends "base.html" %}{% block title %}Citizen Registration{% endblock %}
+{% block content %}<div class="container py-5"><div class="card-dark p-4 p-md-5 mx-auto" style="max-width:700px"><h2 class="text-center">Create Citizen Account</h2><p class="text-muted-custom text-center">Phone number only — no OTP verification.</p>
+<form action="{{ url_for('register_citizen') }}" method="post" enctype="multipart/form-data" id="signup">
+<div class="row g-3"><div class="col-md-6"><label class="form-label">Full Name *</label><input name="fullName" class="form-control" required></div>
+<div class="col-md-6"><label class="form-label">Phone Number *</label><input name="phone" class="form-control" inputmode="numeric" maxlength="10" pattern="[6-9][0-9]{9}" required></div>
+<div class="col-md-6"><label class="form-label">Alternate Phone</label><input name="altPhone" class="form-control" inputmode="numeric" maxlength="10"></div>
+<div class="col-12"><label class="form-label">Permanent Address *</label><textarea name="permanentAddress" class="form-control" rows="2" required></textarea></div>
+<div class="col-12 form-check ms-2"><input class="form-check-input" type="checkbox" id="different"><label class="form-check-label" for="different">Current address is different</label></div>
+<div id="currentBox" class="col-12 d-none"><label class="form-label">Current Address *</label><textarea name="currentAddress" id="current" class="form-control" rows="2"></textarea><label class="form-label mt-2">Address Proof (optional)</label><input name="addressProof" class="form-control" type="file" accept=".pdf,.jpg,.jpeg,.png"></div>
+<div class="col-md-6"><label class="form-label">Password *</label><input id="pw" name="password" class="form-control" type="password" minlength="8" required></div>
+<div class="col-md-6"><label class="form-label">Confirm Password *</label><input id="cpw" name="confirmPassword" class="form-control" type="password" minlength="8" required></div>
+</div><button class="btn btn-gold w-100 mt-4">Create Account</button></form></div></div>{% endblock %}
+{% block scripts %}<script>
+different.onchange=()=>{currentBox.classList.toggle('d-none',!different.checked);current.required=different.checked};
+signup.onsubmit=e=>{if(pw.value!==cpw.value){e.preventDefault();alert('Passwords do not match.')}};
+</script>{% endblock %}

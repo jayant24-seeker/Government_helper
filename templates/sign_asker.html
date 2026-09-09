@@ -1,0 +1,2 @@
+{% extends "base.html" %}{% block title %}Choose Account Type{% endblock %}
+{% block content %}<div class="container py-5"><div class="card-dark p-5 mx-auto text-center" style="max-width:650px"><h2>Join CitizenConnect</h2><p class="text-muted-custom mb-4">Choose your account type.</p><div class="d-flex gap-3 justify-content-center flex-wrap"><a class="btn btn-gold" href="{{ url_for('signup_citizen_page') }}">Sign up as Citizen</a><a class="btn btn-outline-gold" href="{{ url_for('signup_staff_page') }}">Sign up as Staff</a></div></div></div>{% endblock %}
